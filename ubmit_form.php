@@ -43,10 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // -----------------------------
     // Final Response (AJAX friendly)
     // -----------------------------
-    if ($owner_mail_sent && $user_mail_sent) {
-        echo "✅ Message sent successfully!";
-    } else {
-        echo "❌ Error sending message. Please try again later.";
-    }
+    
 }
 ?>

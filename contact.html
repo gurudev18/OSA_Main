@@ -36,8 +36,8 @@
     <section class="contact-section">
       <h2>Contact Us</h2>
 
-      <!-- ✅ Contact Form -->
-      <form id="contactForm" method="post" class="contact-form">
+      <!-- ✅ Contact Form (no AJAX) -->
+      <form action="ubmit_form.php" method="post" class="contact-form">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -52,9 +52,6 @@
 
         <button type="submit">Submit</button>
       </form>
-
-      <!-- ✅ Response Box -->
-      <div id="formResponse" style="display:none; margin-top:10px; font-weight:bold;"></div>
     </section>
 
     <section class="terms-section">
@@ -90,37 +87,6 @@
   </footer>
 
   <script>
-    // ✅ AJAX Form Submission
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const form = e.target;
-      const formData = new FormData(form);
-
-      fetch("Ubmit_form.php", {
-          method: "POST",
-          body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-          const msgDiv = document.getElementById("formResponse");
-          msgDiv.style.display = "block";
-          msgDiv.style.color = data.includes("successfully") ? "green" : "red";
-          msgDiv.textContent = data;
-
-          if (data.includes("successfully")) {
-              form.reset();
-          }
-      })
-      .catch(error => {
-          const msgDiv = document.getElementById("formResponse");
-          msgDiv.style.display = "block";
-          msgDiv.style.color = "red";
-          msgDiv.textContent = "❌ There was an error submitting the form.";
-          console.error("Error:", error);
-      });
-    });
-
     // ✅ Mobile menu toggle
     function toggleMenu() {
       const nav = document.querySelector('nav');
