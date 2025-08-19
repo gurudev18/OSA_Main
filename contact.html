@@ -37,7 +37,7 @@
       <h2>Contact Us</h2>
 
       <!-- ✅ Contact Form (no AJAX) -->
-      <form action="ubmit_form.php" method="post" class="contact-form" target="hidden_iframe">
+      <form action="ubmit_form.php" method="post" class="contact-form" target="hidden_iframe" form id="contactForm">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -95,6 +95,12 @@
       nav.classList.toggle('active');
       hamburger.classList.toggle('active');
     }
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+    setTimeout(() => {
+      this.reset();
+      alert("✅ Your message has been sent successfully!");
+    }, 500);
+  });
   </script>
 </body>
 </html>
