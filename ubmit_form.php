@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Your email (you receive)
+    // Your email (receiver)
     $to = "contact@omshreem-astrology.com";
 
     // Form data
@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = htmlspecialchars($_POST["message"]);
 
     // -----------------------------
-    // 1. Send Email to Site Owner
+    // 1. Email to Site Owner
     // -----------------------------
     $email_subject = "New Contact Form Submission: $subject";
     $email_body = "You received a new message from your website contact form.\n\n";
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $owner_mail_sent = mail($to, $email_subject, $email_body, $headers);
 
     // -----------------------------
-    // 2. Send Confirmation to User
+    // 2. Confirmation Email to User
     // -----------------------------
     $user_subject = "Thank you for contacting OmShreem Astrology";
     $user_body = "Hi $name,\n\n";
@@ -41,12 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_mail_sent = mail($email, $user_subject, $user_body, $user_headers);
 
     // -----------------------------
-    // Final Response
+    // Final Response (AJAX friendly)
     // -----------------------------
     if ($owner_mail_sent && $user_mail_sent) {
-        echo "Message and confirmation sent successfully!";
+        echo "✅ Message sent successfully!";
     } else {
-        echo "Error sending message or confirmation.";
+        echo "❌ Error sending message. Please try again later.";
     }
 }
 ?>
