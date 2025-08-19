@@ -37,7 +37,7 @@
       <h2>Contact Us</h2>
 
       <!-- ✅ Contact Form (no AJAX) -->
-      <form action="ubmit_form.php" method="post" class="contact-form">
+      <form action="ubmit_form.php" method="post" class="contact-form" target="hidden_iframe">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -52,6 +52,7 @@
 
         <button type="submit">Submit</button>
       </form>
+      <iframe name="hidden_iframe" style="display:none;"></iframe>
     </section>
 
     <section class="terms-section">
